@@ -13,8 +13,8 @@ source.include_exts = py,png,jpg,kv,atlas,json,ttf,txt,csv
 
 # Version
 version = 1.0.0
-version.regex = __version__\s*=\s*['"](.*?)['"]
-version.filename = main.py
+# version.regex = __version__\s*=\s*['"](.*?)['"]
+# version.filename = main.py
 
 # Requirements
 requirements = python3,kivy,plyer,Pillow,requests,numpy
