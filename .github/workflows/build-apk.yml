@@ -24,29 +24,15 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y \
-            git \
-            zip \
-            unzip \
-            openjdk-17-jdk \
-            python3-pip \
-            autoconf \
-            automake \
-            cmake \
-            libtool \
-            pkg-config \
-            libncurses-dev \
-            ccache \
-            curl \
-            lld \
-            llvm \
-            libffi-dev \
-            libssl-dev
+            git zip unzip openjdk-17-jdk python3-pip \
+            autoconf automake cmake libtool pkg-config \
+            libncurses-dev ccache curl lld llvm \
+            libffi-dev libssl-dev
 
-      - name: Install Buildozer
+      - name: Install Buildozer + Cython
         run: |
           pip install --upgrade pip
-          pip install cython
-          pip install buildozer
+          pip install cython buildozer
 
       - name: Cache Buildozer
         uses: actions/cache@v4
@@ -58,7 +44,7 @@ jobs:
 
       - name: Build APK
         run: |
-          yes "" | buildozer android debug
+          yes | buildozer android debug 2>&1
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
