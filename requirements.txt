@@ -1,0 +1,5 @@
+kivy>=2.1.0
+plyer>=2.0
+Pillow>=9.0
+numpy>=1.21
+requests>=2.28
