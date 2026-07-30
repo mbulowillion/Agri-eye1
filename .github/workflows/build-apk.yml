@@ -29,10 +29,10 @@ jobs:
             libncurses-dev ccache curl lld llvm \
             libffi-dev libssl-dev
 
-      - name: Install Buildozer + Cython
+      - name: Install Buildozer
         run: |
           pip install --upgrade pip
-          pip install cython buildozer
+          pip install buildozer cython
 
       - name: Cache Buildozer
         uses: actions/cache@v4
@@ -42,9 +42,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildozer-
 
+      - name: Verify Buildozer
+        run: |
+          which buildozer
+          buildozer --version
+
       - name: Build APK
         run: |
-          yes | buildozer android debug 2>&1
+          yes | buildozer android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
